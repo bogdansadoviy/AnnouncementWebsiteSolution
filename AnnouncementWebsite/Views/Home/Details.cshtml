@@ -1,0 +1,52 @@
+﻿@model AnnouncementWebsite.Models.AnnouncementDetailViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Details</h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Announcements.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Announcements.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Announcements.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Announcements.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Announcements.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Announcements.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Announcements.DateAdded)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Announcements.DateAdded)
+        </dd>
+    </dl>
+
+    <h4>Similar announcements</h4>
+    <hr />
+    <dl>
+        @foreach (var item in Model.SimilarAnnouncements)
+        {
+            <dd>
+                @Html.ActionLink(item.Title, "Details", null, new { id = item.Id })
+            </dd>
+        }
+    </dl>
+    <hr />
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
